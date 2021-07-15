@@ -13,25 +13,6 @@ cache:
   directories:
     - $HOME/docker
 
-before_install:
-  - git clone https://github.com/mariadb-corporation/connector-test-machine.git
-  # Load cached docker images
-  - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
-
-install:
-  - |-
-    if [ -z "$server_branch" ] ; then
-      case $TRAVIS_OS_NAME in
-        windows)
-          connector-test-machine/launch.bat -t "$srv" -v "$v" -d testc
-          ;;
-        linux)
-          source connector-test-machine/launch.sh -t "$srv" -v "$v" -d testc -l "$local" -n "$native"
-          ;;
-      esac
-    fi
-
-
 env: local=0
 
 jobs:
