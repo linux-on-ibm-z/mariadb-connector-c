@@ -40,6 +40,8 @@ jobs:
     - env: srv=mariadb v=10.5
       os: windows
       language: shell
+    - os: linux
+      arch: s390x   
   include:
     - env: srv=mariadb v=10.5
       os: windows
