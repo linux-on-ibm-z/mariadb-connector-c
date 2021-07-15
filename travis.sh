@@ -47,7 +47,8 @@ else
   # run connector test suite
   ###################################################################################################################
   echo "run connector test suite"
-
+pwd
+echo "$SSLCERT"
   cmake . -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCERT_PATH=${SSLCERT}
 
   if [ "$TRAVIS_OS_NAME" = "windows" ] ; then
@@ -73,7 +74,18 @@ else
     export SSLCERT=$TEST_DB_SERVER_CERT
     export MARIADB_PLUGIN_DIR=$PWD
 
+
+    echo "$MYSQL_TEST_USER"
+    echo "$MYSQL_TEST_HOST"
+    echo "$MYSQL_TEST_PASSWD"
+    echo "$MYSQL_TEST_PORT"
+    echo "$MYSQL_TEST_DB"
+    echo "$MYSQL_TEST_TLS"
+    echo "$SSLCERT"
+    echo "$MARIADB_PLUGIN_DIR"
+    
     echo "MYSQL_TEST_PLUGINDIR=$MYSQL_TEST_PLUGINDIR"
+    echo "$MYSQL_TEST_PLUGINDIR"
     if [ -n "$MYSQL_TEST_SSL_PORT" ] ; then
       export MYSQL_TEST_SSL_PORT=$MYSQL_TEST_SSL_PORT
     fi
@@ -85,8 +97,11 @@ else
     make
   fi
 
+echo "$MYSQL_TEST_TLS"
+echo "$SSLCERT"
+echo "$MYSQL_TEST_SSL_PORT"
   ls -lrt
-
+pwd
   openssl ciphers -v
   cd unittest/libmariadb
   ctest -V
