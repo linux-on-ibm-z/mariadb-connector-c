@@ -1,6 +1,6 @@
 os: linux
 arch: s390x
-dist: bionic
+dist: xenial
 language: c
 services: docker
 addons:
