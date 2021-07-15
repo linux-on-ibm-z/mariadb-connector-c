@@ -1,6 +1,6 @@
 os: linux
 arch: s390x
-dist: focal
+dist: bionic
 language: c
 services: docker
 addons:
@@ -18,7 +18,7 @@ env: local=0
 jobs:
   fast_finish: true
   allow_failures:
-    - env: srv=mariadb v=10.3 local=1    
+    - env: srv=mariadb v=10.1 local=1    
   
 
 script: ./travis.sh
