@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -e
+apt-get update && apt-get install mariadb-server
+service mysql start
 
 if [ -n "$server_branch" ] ; then
 
